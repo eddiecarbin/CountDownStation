@@ -49,7 +49,8 @@ void SoundPlayer::update()
 
     if (myDFPlayer.available() && soundPlaying == true)
     {
-
+        //Serial.println(myDFPlayer.readState());
+        //myDFPlayer.readState() == -1 && 
         if (myDFPlayer.readType() == DFPlayerPlayFinished)
         {
             soundPlaying = false;
@@ -65,8 +66,8 @@ bool SoundPlayer::isPlaying()
 
 void SoundPlayer::PlaySound(int value = 1)
 {
-    soundPlaying = true;
     myDFPlayer.play(value); //Play the first mp3
+    soundPlaying = true;
 }
 
 void SoundPlayer::StopSound()
