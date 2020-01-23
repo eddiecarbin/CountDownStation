@@ -12,9 +12,9 @@
 #define GO_TO_COUNTDOWN_STATE 1
 #define GO_TO_LAUNCH_STATE 2
 
-#define SOUND_COUNTDOWN 2
-#define SOUND_LAUNCH 3
-#define SOUND_ERROR 2
+#define SOUND_COUNTDOWN 1
+#define SOUND_LAUNCH 2
+#define SOUND_ERROR 3
 
 // #define POT_PIN A5
 Button launchButton(LAUNCH_BUTTON_PIN);
@@ -49,7 +49,7 @@ void OnCountDownStateUpdate()
       if (soundPlayer.isPlaying() == false)
       {
         Serial.println("launch button pushed in error");
-        //soundPlayer.PlaySound(3);
+        soundPlayer.PlaySound(SOUND_ERROR);
       }
     }
 
@@ -88,7 +88,7 @@ void OnLaunchStateUpdate()
       if (soundPlayer.isPlaying() == false)
       {
         Serial.println("countdown button pushed in error");
-        //soundPlayer.PlaySound(3);
+        soundPlayer.PlaySound(SOUND_ERROR);
       }
     }
   }

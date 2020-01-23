@@ -50,7 +50,7 @@ void SoundPlayer::update()
     if (myDFPlayer.available() && soundPlaying == true)
     {
         //Serial.println(myDFPlayer.readState());
-        //myDFPlayer.readState() == -1 && 
+        //myDFPlayer.readState() == -1 &&
         if (myDFPlayer.readType() == DFPlayerPlayFinished)
         {
             soundPlaying = false;
@@ -61,7 +61,7 @@ void SoundPlayer::update()
 
 bool SoundPlayer::isPlaying()
 {
-    return soundPlaying;
+    return (digitalRead(3) == 0);
 }
 
 void SoundPlayer::PlaySound(int value = 1)
