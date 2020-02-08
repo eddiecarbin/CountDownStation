@@ -16,10 +16,11 @@
 #define SOUND_LAUNCH 2
 #define SOUND_ERROR 3
 
+#define FRAME_PER_SECOND 1000/60
 // #define POT_PIN A5
-Button launchButton(LAUNCH_BUTTON_PIN);
+Button launchButton(LAUNCH_BUTTON_PIN, 50, false);
+Button countdownButton(COUNTDOWN_BUTTON_PIN, 50 , false);
 
-Button countdownButton(COUNTDOWN_BUTTON_PIN);
 SoundPlayer soundPlayer(18, 15);
 
 State StateDoNothing(NULL, NULL, NULL);
@@ -131,9 +132,9 @@ void loop()
     soundPlayer.volume(volume);
   }
 
+  soundPlayer.update();
   launchButton.read();
   countdownButton.read();
-  soundPlayer.update();
   fsm.run_machine();
-  delay(100);
+  delay(FRAME_PER_SECOND);
 }
